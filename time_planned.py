@@ -44,7 +44,7 @@ def main():
     current_day = datetime.utcnow()
     first_day = (current_day - timedelta(current_day.weekday())).isoformat() + 'Z'
 
-    print(bcolors.OKBLUE + '[+] Pulling this weeks events...' + bcolors.ENDC)
+    print(bcolors.OKBLUE + '[+] Pulling this weeks events [+]' + bcolors.ENDC)
     events_result = service.events().list(calendarId='primary', timeMin=first_day,
                                         maxResults=MAX_EVENTS, singleEvents=True,
                                         orderBy='startTime').execute()
