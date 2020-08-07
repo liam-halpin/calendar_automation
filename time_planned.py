@@ -12,18 +12,19 @@ from google.auth.transport.requests import Request
 MAX_EVENTS = 100
 # Update for your events
 COLORS = {
-    '#a4bdfc': '',    # Lavender
-    '#5484ed': '',    # Blueberry
-    '#46d6db': '',    # Peacock
-    '#7ae7bf': '',    # Sage
-    '#51b749': '',    # Basil
-    '#ffb878': '',    # Tangerine
-    '#fbd75b': '',    # Banana
+    '#a4bdfc': '',                   # Lavender
+    '#5484ed': '',              # Blueberry
+    '#46d6db': '',                   # Peacock
+    '#7ae7bf': '',                # Sage
+    '#51b749': '',                # Basil
+    '#ffb878': '',               # Tangerine
+    '#fbd75b': '',            # Banana
     '#ff887c': '',    # Flamingo
-    '#dc2127': '',    # Tomato
-    '#fa573c': '',    # Mandarine
-    '#dbadff': '',    # Grape
-    '#e1e1e1': ''     # Graphite
+    '#dc2127': '',               # Tomato
+    '#fa573c': '',                   # Mandarine
+    '#dbadff': '',                   # Grape
+    '#e1e1e1': '',                # Graphite
+    '#9fc6e7': ''               # Default
 }
 
 def format_time(time):
@@ -77,11 +78,8 @@ def main():
             for t in total:
                 if t.color == color:
                     total_time += t.total_time
-            
-            text = "You plan to spend "
-            string_length=len(text)
-            string_revised=text.ljust(string_length)
-            print(string_revised + format_timedelta(total_time) + "hrs this week on " + task)
+
+            print("You plan to spend " + bcolors.OKGREEN + format_timedelta(total_time) + bcolors.ENDC + " hours this week on " + bcolors.OKGREEN + task + bcolors.ENDC)
     
 
 if __name__ == '__main__':
