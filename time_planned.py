@@ -16,7 +16,7 @@ COLORS = {
     '#5484ed': '',              # Blueberry
     '#46d6db': '',                   # Peacock
     '#7ae7bf': '',                # Sage
-    '#51b749': '',                # Basil
+    '#51b749': '',            # Basil
     '#ffb878': '',               # Tangerine
     '#fbd75b': '',            # Banana
     '#ff887c': '',    # Flamingo
@@ -42,8 +42,11 @@ def format_timedelta(timedelta):
 def main():
     service = setup()
 
+    d = datetime.now().date()
     current_day = datetime.utcnow()
-    first_day = (current_day - timedelta(current_day.weekday())).isoformat() + 'Z'
+    first_day = (datetime(d.year, d.month, d.day, 0) - timedelta(days=current_day.weekday())).isoformat() + 'Z'
+    print(first_day)
+    current_day = datetime.utcnow()
 
     print(bcolors.OKBLUE + '[+] Pulling this weeks events [+]' + bcolors.ENDC)
     events_result = service.events().list(calendarId='primary', timeMin=first_day,
